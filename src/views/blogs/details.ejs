@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+    <%- include('../partials/header.ejs') %>
+
+    <body>
+        <%- include('../partials/navheader.ejs') %>
+
+        <!-- HALAMAN DETAIL BLOG -->
+        <div class="details content container is-fluid">
+            <h2><%= blog.title %></h2>
+            <div class="content">
+                <p><%= blog.body %></p>
+            </div>
+            <a class="delete" data-doc="<%= blog._id %> ">Delete</a>
+        </div>
+        <%- include('../partials/footer.ejs') %>
+
+        <!-- TAG untuk menjalankan click delete  -->
+        <script defer>
+            const buttonDeleteEl = document.querySelector('a.delete');
+
+            buttonDeleteEl.addEventListener('click', (event) => {
+                event.preventDefault();
+                const elTarget = event.target;
+                const endpoint = `/api/v1/blog/delete/${elTarget.dataset.doc}`;
+
+                fetch(endpoint, {
+                    method: 'DELETE',
+                })
+                    .then((res) => {
+                        if (res.status === 200) {
+                            return res.json();
+                        } else {
+                            return Promise.reject(
+                                new Error(`Gagal mengambil data ${res.status}`),
+                            );
+                        }
+                    })
+                    .then((resjson) => {
+                        console.log(resjson);
+                        window.location.href = resjson.redirect;
+                    })
+                    .catch((err) => {
+                        console.log(err);
+                    });
+            });
+        </script>
+    </body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+    <%- include('../partials/header.ejs') %>
+
+    <body>
+        <%- include('../partials/navheader.ejs') %>
+
+        <!-- HALAMAN BLOG -->
+        <div class="create-blog content container is-fluid">
+            <form action="/blogs" method="POST">
+                <label class="label" for="title">Judul Blog</label>
+                <input
+                    class="input"
+                    type="text"
+                    placeholder="Judul"
+                    id="title"
+                    name="title"
+                    required
+                />
+                <label class="label" for="snippet">Blog Snippet</label>
+                <input
+                    class="input"
+                    type="text"
+                    placeholder="Cuplikan blog"
+                    id="snippet"
+                    name="snippet"
+                    required
+                />
+                <label class="label" for="body">Blog Content</label>
+                <textarea
+                    class="input"
+                    type="text"
+                    placeholder="Isi blog"
+                    id="body"
+                    name="body"
+                    required
+                ></textarea>
+
+                <button class="button is-primary" id="buttonsubmit">
+                    Kirim Blog
+                </button>
+            </form>
+        </div>
+
+        <%- include('../partials/footer.ejs') %>
+    </body>
+</html>

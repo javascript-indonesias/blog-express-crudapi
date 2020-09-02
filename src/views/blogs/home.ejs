@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+    <%- include('../partials/header.ejs') %>
+
+    <body>
+        <%- include('../partials/navheader.ejs') %>
+
+        <!-- HALAMAN BLOG -->
+        <div class="blogs content container is-fluid">
+            <h2>Semua Postingan</h2>
+            <% const hello = 'Hello World EJS'%>
+            <p>Sampel EJS <%=hello %></p>
+
+            <br />
+            <div class="list-blogs">
+                <% if (blogs.length > 0) { %> <% blogs.forEach(blog => { %>
+                <a class="single" href="/blogs/<%= blog._id  %>">
+                    <h3 class="title"><%= blog.title %></h3>
+                    <p class="snippet is-medium"><%= blog.snippets %></p>
+                </a>
+
+                <% }) %> <% } else { %>
+                <p>Tidak ada artikel untuk ditampilkan...</p>
+                <% } %>
+            </div>
+        </div>
+
+        <%- include('../partials/footer.ejs') %>
+    </body>
+</html>
