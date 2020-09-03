@@ -1,5 +1,6 @@
 import { getAllBlogs, getDetailBlog, addBlogs } from '../repository/blog-crud';
 import logger from '../utils/config-winston';
+import { validateResultRequest } from '../services/validation-sanitizer';
 
 const dateFooter = new Date();
 const stringWaktuSekarang = `Dibuat oleh NetKucing @ ${dateFooter.getFullYear()}`;
@@ -59,20 +60,26 @@ const createBlogPage = (_req, res) => {
 const createBlogPost = async (req, res) => {
     // Menerima kiriman data dari blog create
     // Terima kiriman request post buat blog
-    logger.info(req.body);
-    const titleBlog = req.body.title;
-    const snippetBlog = req.body.snippet;
-    const isiBlog = req.body.body;
+    const errorReq = validateResultRequest(req);
+    const arrayErrorReq = errorReq.errors;
+    if (arrayErrorReq.length === 0) {
+        logger.info(req.body);
+        const titleBlog = req.body.title;
+        const snippetBlog = req.body.snippet;
+        const isiBlog = req.body.body;
 
-    try {
-        // simpan ke database mongodb
-        const resultBlog = await addBlogs(titleBlog, snippetBlog, isiBlog);
-        if (resultBlog) {
-            logger.info(resultBlog);
-            res.redirect('/blogs');
+        try {
+            // simpan ke database mongodb
+            const resultBlog = await addBlogs(titleBlog, snippetBlog, isiBlog);
+            if (resultBlog) {
+                logger.info(resultBlog);
+                res.redirect('/blogs');
+            }
+        } catch (error) {
+            logger.error(error);
         }
-    } catch (error) {
-        logger.error(error);
+    } else {
+        res.status(400).json({ errors: arrayErrorReq });
     }
 };
 

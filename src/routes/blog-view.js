@@ -1,5 +1,6 @@
 import express from 'express';
 import blogController from '../controllers/blog-controller';
+import { validateCreateBlog } from '../services/validation-sanitizer';
 
 function getBlogViewRoutes() {
     const router = express.Router();
@@ -15,7 +16,7 @@ function getBlogViewRoutes() {
 
     // ENDPOINT REST API
     // API untuk Mengirim kiriman data blog
-    router.post('/', blogController.createBlogPost);
+    router.post('/', validateCreateBlog, blogController.createBlogPost);
     // Hapus data blog yang ditulis
     return router;
 }
