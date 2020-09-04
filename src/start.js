@@ -96,9 +96,7 @@ function startServer({ port = process.env.PORT } = {}) {
         getBlogAPIRouter(),
     );
 
-    app.get('/', (_req, res) => {
-        res.redirect('/blogs');
-    });
+    // Hapus ratelimiter, speedlimiter jika ingin memuat halaman blog lebih cepat
     app.use('/', rateLimiter, speedLimiter, corsRequest, getBlogViewRouter());
 
     // add the generic error handler just in case errors are missed by middleware

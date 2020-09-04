@@ -9,12 +9,12 @@ const rateLimiter = rateLimit({
     max: 10,
 });
 
-// Turunkan kecepatan response setelah request pertama
+// Turunkan kecepatan response setelah request kedua
 // Dalam rentang waktu 30 detik
 // Pada endpoint api yang sama
 const speedLimiter = slowDown({
     windowMs: 30 * 1000,
-    delayAfter: 1,
+    delayAfter: 2,
     delayMs: 500,
 });
 

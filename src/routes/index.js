@@ -14,6 +14,9 @@ function getBlogAPIRouter() {
 function getBlogViewRouter() {
     const router = express.Router();
     router.use('/blogs', getBlogViewRoutes());
+    router.use('/', (_req, res) => {
+        res.redirect('/blogs');
+    });
     return router;
 }
 
