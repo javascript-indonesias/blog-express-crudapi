@@ -1,42 +1,32 @@
 ### TEST REST API
 ### Menggunakan Ekstensi VS Code REST Client
-
-### Data Covid
-GET http://localhost:3200/covid/data/pemerintah
-
-###
-GET http://localhost:3200/covid/data/matdroid
-
-### MATH CALC
-
-GET http://localhost:3200/api/v1/math/add?a=1&c=3
-
-###
-
-GET http://localhost:3200/api/v1/math/prime-pool?startrange=1&ranges=20
-
-###
-
-GET http://localhost:3200/api/v1/math/calc-prime?startrange=1&ranges=200
-
-###
-
-GET http://localhost:3200/api/v1/math/bubbles?lengthnum=5&maxnum=10
-
 ### BLOG API
 
 GET http://localhost:3200/api/v1/blog/blog-list
 
 ###
 
-GET http://localhost:3200/api/v1/blog/blogs/5f3cd47b7113e51f703ae7bc
+GET http://localhost:3200/api/v1/blog/blogs/5f51e864215c4e12e307579c
 
 ###
-
+### Kirim Data testing untuk cek validasi blog
 POST http://localhost:3200/api/v1/blog/create-blog
 Content-Type: application/x-www-form-urlencoded
 
-title=Blog Sore Hari&snippet=Snippet singkat blog sore hari&text=Isi panjang dari blog saja
+title=b&snippet=ss&text=Isi
+
+### Kirim Data script injection untuk cek validasi dan sanitize blog
+POST http://localhost:3200/api/v1/blog/create-blog
+Content-Type: application/x-www-form-urlencoded
+
+title=Tes XSS Script Injection&snippet=<tr>
+  <td>Hi, I'm your first cell.</td>
+  <td>I'm your second cell.</td>
+  <td>I'm your third cell.</td>
+  <td>I'm your fourth cell.</td>
+</tr>&text=<script>Person.prototype.greeting = function() {
+  alert('Hi! I\'m ' + this.name.first + '.');
+};</script>
 
 # {
 #     "title": "Judul blog",
@@ -46,7 +36,3 @@ title=Blog Sore Hari&snippet=Snippet singkat blog sore hari&text=Isi panjang dar
 
 ###
 DELETE  http://localhost:3200/api/v1/blog/blogs/5f3e4b0d7968394344eb9493
-
-### MOCK DATA
-
-GET http://localhost:3200/mockdata

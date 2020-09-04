@@ -1,4 +1,26 @@
-import { body, param, validationResult } from 'express-validator';
+import { check, body, param, validationResult } from 'express-validator';
+
+const validateCreateBlogAPI = [
+    body('title')
+        .not()
+        .isEmpty()
+        .isLength({ min: 5 })
+        .escape()
+        .trim()
+        .withMessage('Judul blog tidak boleh kosong'),
+    body('snippet')
+        .notEmpty({ checkFalsy: true, nullable: false })
+        .isLength({ min: 5 })
+        .escape()
+        .trim()
+        .withMessage('Isi snippet dengan benar'),
+    check('text')
+        .notEmpty({ checkFalsy: true, nullable: false })
+        .isLength({ min: 5 })
+        .escape()
+        .trim()
+        .withMessage('Isi konten blog dengan benar'),
+];
 
 const validateCreateBlog = [
     body('title')
@@ -34,4 +56,9 @@ const validateResultRequest = (req) => {
     return errorsResult;
 };
 
-export { validateCreateBlog, validateDeleteBlog, validateResultRequest };
+export {
+    validateCreateBlog,
+    validateCreateBlogAPI,
+    validateDeleteBlog,
+    validateResultRequest,
+};

@@ -8,6 +8,7 @@ import {
 } from '../repository/blog-crud';
 import {
     validateDeleteBlog,
+    validateCreateBlogAPI,
     validateResultRequest,
 } from '../services/validation-sanitizer';
 
@@ -32,12 +33,24 @@ async function getListBlogs(_req, res) {
 }
 
 async function createNewBlogs(req, res) {
-    const { body } = req;
-    try {
-        const result = await addBlogs(body.title, body.snippet, body.text);
-        res.json({ status: true, message: 'sukses', data: result });
-    } catch (err) {
-        res.json({ status: false, message: 'Error memasukkan data blog' });
+    const arrayErrorReqs = validateResultRequest(req).errors;
+
+    if (arrayErrorReqs.length > 0) {
+        // terdapat error dari data yang dikirim
+        res.status(400).json({
+            status: false,
+            message: 'Error memasukkan data blog',
+            errors: arrayErrorReqs,
+        });
+    } else {
+        // Data tidak ada yang error dan tidak mencurigakan
+        const { body } = req;
+        try {
+            const result = await addBlogs(body.title, body.snippet, body.text);
+            res.json({ status: true, message: 'sukses', data: result });
+        } catch (err) {
+            res.json({ status: false, message: 'Error memasukkan data blog' });
+        }
     }
 }
 
@@ -77,7 +90,12 @@ async function deleteBlogById(req, res) {
 function getBlogAPIRoutes() {
     const router = express.Router();
     router.get('/blog-list', jsonParser, getListBlogs);
-    router.post('/create-blog', urlencodedParser, createNewBlogs);
+    router.post(
+        '/create-blog',
+        validateCreateBlogAPI,
+        urlencodedParser,
+        createNewBlogs,
+    );
     router.get('/blogs/:id', getBlogDetail);
     router.delete('/delete/:id', validateDeleteBlog, deleteBlogById);
     return router;

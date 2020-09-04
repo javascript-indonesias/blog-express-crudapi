@@ -8,39 +8,10 @@ const pkg = require('./package.json');
 
 const config = require('./config');
 
-// const nodeModules = {};
-// fs.readdirSync('node_modules')
-//     .filter((x) => {
-//         return ['.bin'].indexOf(x) === -1;
-//     })
-//     .forEach((mod) => {
-//         nodeModules[mod] = `commonjs ${mod}`;
-//     });
-
 module.exports = {
     mode: 'production',
-    // entry: path.resolve(__dirname, 'src', 'index.js'),
-    // Contoh bundle dengan worker thread
     entry: {
         'server.bundle': path.resolve(__dirname, 'src', 'index.js'),
-        'buble-sorts.worker': path.resolve(
-            __dirname,
-            'src',
-            'workers',
-            'buble-sorts.worker.js',
-        ),
-        'calc-primes.worker': path.resolve(
-            __dirname,
-            'src',
-            'workers',
-            'calc-primes.worker.js',
-        ),
-        'workerpool-primes.worker': path.resolve(
-            __dirname,
-            'src',
-            'workers',
-            'workerpool-primes.worker.js',
-        ),
     },
     target: 'node',
     node: {
