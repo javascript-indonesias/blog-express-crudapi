@@ -2,7 +2,7 @@
 
 Latihan membuat web app Blog dengan Express JS dan fungsi CRUD ke MongoDb. Dibuat berdasarkan latihan dari Net Ninja berikut ini [https://www.youtube.com/playlist?list=PL4cUxeGkcC9jsz4LDYc6kv3ymONOKxwBU](https://www.youtube.com/playlist?list=PL4cUxeGkcC9jsz4LDYc6kv3ymONOKxwBU) .
 
-Selain itu didalam project ini diadopsi juga boilerplate yang sebelumnya sudah dibuat, yang bernama Express Simple Boilerplate [https://github.com/javascript-indonesias/ExpressSimpleBoilerPlate](https://github.com/javascript-indonesias/ExpressSimpleBoilerPlate) . Dengan demikian penggunaan sintaks JavaScript di Node JS bisa menggunakan standar ES2015 / ES6 ke atas.
+Selain itu, project ini mengadopsi struktur boilerplate yang sebelumnya sudah dibuat, yang bernama Express Simple Boilerplate [https://github.com/javascript-indonesias/ExpressSimpleBoilerPlate](https://github.com/javascript-indonesias/ExpressSimpleBoilerPlate) . Dengan demikian penggunaan sintaks JavaScript di Node JS bisa menggunakan standar ES2015 / ES6 ke atas.
 
 ## Instalasi
 
@@ -12,7 +12,7 @@ Silahkan lakukan clone project ini dengan cara mengunduh dari menu Code > Zip di
 git clone -b master -o github --depth 1 --single-branch https://github.com/javascript-indonesias/blog-express-crudapi.git
 ```
 
-Setelah melakukan clone project atau download project kerangka ini, jalankan perintah ```npm install``` di dalam folder project tersebut.
+Setelah melakukan clone project atau download project kerangka ini, jalankan perintah ```npm install``` di dalam folder project tersebut. Pastikan juga URL untuk MongoDb Atlas milik anda sudah tersedia untuk digunakan.
 
 ## Penggunaan Development dan Debug
 
