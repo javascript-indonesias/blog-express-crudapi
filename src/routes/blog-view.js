@@ -9,6 +9,7 @@ import {
 } from '../controllers/blog-controller';
 import { validateCreateBlog } from '../services/validation-sanitizer';
 
+// Controller middleware dibuat di file terpisah
 function getBlogViewRoutes() {
     const router = express.Router();
     // Blog routing

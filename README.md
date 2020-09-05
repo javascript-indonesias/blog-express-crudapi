@@ -1,17 +1,15 @@
-# Node JS Express Boilerplate ES2015++
+# Latihan Blog CRUD Tutorial Net Ninja
 
-Kerangka aplikasi (boilerplate) untuk aplikasi backend REST API berbasis Node JS dengan framework Express JS, Babel, dan ES2015. Dibuat berdasarkan referensi [Kent C. Dodds Blogs](https://kentcdodds.com/blog/how-i-structure-express-apps) yang berjudul **_How I structure Express apps_** dan [Coding Garden with CJ Node JS](https://www.youtube.com/watch?v=nCWE6eonL7k). Kerangka dengan tambahan Linter ESLint dan Prettier Formatter, bundle aplikasi dengan melakukan Webpack, CRUD sederhana dengan MongoDB, Winston Logger, mock data dengan Faker JS, dan contoh penggunaan Worker Thread untuk proses komputasi data yang berat di thread terpisah Node JS.
+Latihan membuat web app Blog dengan Express JS dan fungsi CRUD ke MongoDb. Dibuat berdasarkan latihan dari Net Ninja berikut ini [https://www.youtube.com/playlist?list=PL4cUxeGkcC9jsz4LDYc6kv3ymONOKxwBU](https://www.youtube.com/playlist?list=PL4cUxeGkcC9jsz4LDYc6kv3ymONOKxwBU) .
 
-Github sumber dari Kent C Dodds adalah disini [https://github.com/kentcdodds/express-app-example](https://github.com/kentcdodds/express-app-example).
-
-Gthub sumber dari Coding Garden with CJ dapat dilihat disini [https://github.com/CodingGarden/mars-weather-api](https://github.com/CodingGarden/mars-weather-api)
+Selain itu didalam project ini diadopsi juga boilerplate yang sebelumnya sudah dibuat, yang bernama Express Simple Boilerplate [https://github.com/javascript-indonesias/ExpressSimpleBoilerPlate](https://github.com/javascript-indonesias/ExpressSimpleBoilerPlate) . Dengan demikian penggunaan sintaks JavaScript di Node JS bisa menggunakan standar ES2015 / ES6 ke atas.
 
 ## Instalasi
 
 Silahkan lakukan clone project ini dengan cara mengunduh dari menu Code > Zip di halaman Github ini. Atau lakukan dengan melakukan Git Clone project dengan perintah :
 
 ```sh
-git clone -b master -o github --depth 1 --single-branch https://github.com/javascript-indonesias/ExpressSimpleBoilerPlate.git
+git clone -b master -o github --depth 1 --single-branch https://github.com/javascript-indonesias/blog-express-crudapi.git
 ```
 
 Setelah melakukan clone project atau download project kerangka ini, jalankan perintah ```npm install``` di dalam folder project tersebut.
