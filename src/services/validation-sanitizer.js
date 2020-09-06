@@ -2,46 +2,48 @@ import { check, body, param, validationResult } from 'express-validator';
 
 const validateCreateBlogAPI = [
     body('title')
+        .trim()
         .not()
         .isEmpty()
         .isLength({ min: 5 })
+        .withMessage('Judul blog tidak boleh kosong')
         .escape()
-        .trim()
-        .withMessage('Judul blog tidak boleh kosong'),
+        .trim(),
     body('snippet')
+        .trim()
         .notEmpty({ checkFalsy: true, nullable: false })
         .isLength({ min: 5 })
-        .escape()
-        .trim()
-        .withMessage('Isi snippet dengan benar'),
+        .withMessage('Isi snippet dengan benar')
+        .escape(),
     check('text')
-        .notEmpty({ checkFalsy: true, nullable: false })
-        .isLength({ min: 5 })
-        .escape()
         .trim()
-        .withMessage('Isi konten blog dengan benar'),
+        .notEmpty({ checkFalsy: true, nullable: false })
+        .withMessage('Isi konten blog tidak boleh kosong')
+        .isLength({ min: 5 })
+        .withMessage('Isi konten blog dengan benar')
+        .escape(),
 ];
 
 const validateCreateBlog = [
     body('title')
+        .trim()
         .not()
         .isEmpty()
         .isLength({ min: 5 })
-        .escape()
-        .trim()
-        .withMessage('Judul blog tidak boleh kosong'),
+        .withMessage('Judul blog tidak boleh kosong')
+        .escape(),
     body('snippet')
+        .trim()
         .notEmpty({ checkFalsy: true, nullable: false })
         .isLength({ min: 5 })
-        .escape()
-        .trim()
-        .withMessage('Isi snippet dengan benar'),
+        .withMessage('Isi snippet dengan benar')
+        .escape(),
     body('body')
+        .trim()
         .notEmpty({ checkFalsy: true, nullable: false })
         .isLength({ min: 5 })
-        .escape()
-        .trim()
-        .withMessage('Isi konten blog dengan benar'),
+        .withMessage('Isi konten blog dengan benar')
+        .escape(),
 ];
 
 const validateDeleteBlog = [
