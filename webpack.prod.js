@@ -79,6 +79,8 @@ module.exports = {
                 { from: 'DEPLOY-README.txt', to: './' },
                 { from: '.env', to: './' },
                 { from: 'winston-logs', to: './winston-logs' },
+                { from: 'src/views', to: './views' },
+                { from: 'src/public', to: './public' },
             ],
         }),
     ],

@@ -4,7 +4,7 @@
   "description": "Aplikasi CRUD sederhana dari latihan Net Ninja untuk Node JS course",
   "main": "index.js",
   "engines": {
-    "node": "12.18.4"
+    "node": "14.15.0"
   },
   "scripts": {
     "build-babel": "babel --delete-dir-on-start --out-dir dist --copy-files --ignore \"**/__tests__/**,**/__mocks__/**\" --no-copy-ignored src",
